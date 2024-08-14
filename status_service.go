@@ -5,17 +5,17 @@ import (
 	"net/http"
 )
 
-type GetStatusService struct {
+type StatusService struct {
 	c         *Client
 	messageID int64
 }
 
-func (s *GetStatusService) MessageID(messageID int64) *GetStatusService {
+func (s *StatusService) MessageID(messageID int64) *StatusService {
 	s.messageID = messageID
 	return s
 }
 
-func (s *GetStatusService) Do(ctx context.Context, opts ...RequestOption) (res *Status, err error) {
+func (s *StatusService) Do(ctx context.Context, opts ...RequestOption) (res *Status, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/status.json",
@@ -46,17 +46,17 @@ type Status struct {
 	} `json:"entries"`
 }
 
-type GetStatusByLocalIDService struct {
+type StatusByLocalIDService struct {
 	c       *Client
 	localID int64
 }
 
-func (s *GetStatusByLocalIDService) LocalID(localID int64) *GetStatusByLocalIDService {
+func (s *StatusByLocalIDService) LocalID(localID int64) *StatusByLocalIDService {
 	s.localID = localID
 	return s
 }
 
-func (s *GetStatusByLocalIDService) Do(ctx context.Context, opts ...RequestOption) (res *StatusByLocalID, err error) {
+func (s *StatusByLocalIDService) Do(ctx context.Context, opts ...RequestOption) (res *StatusByLocalID, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/status.json",

@@ -5,17 +5,17 @@ import (
 	"net/http"
 )
 
-type GetSelectService struct {
+type SelectService struct {
 	c         *Client
 	messageID int64
 }
 
-func (s *GetSelectService) MessageID(messageID int64) *GetSelectService {
+func (s *SelectService) MessageID(messageID int64) *SelectService {
 	s.messageID = messageID
 	return s
 }
 
-func (s *GetSelectService) Do(ctx context.Context, opts ...RequestOption) (res *Select, err error) {
+func (s *SelectService) Do(ctx context.Context, opts ...RequestOption) (res *Select, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/select.json",

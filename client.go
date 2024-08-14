@@ -158,20 +158,20 @@ func (c *Client) SetApiEndpoint(url string) *Client {
 	return c
 }
 
-func (c *Client) NewSendService() *GetSendService {
-	return &GetSendService{c: c}
+func (c *Client) NewSendService() *SendService {
+	return &SendService{c: c}
 }
-func (c *Client) NewSendArrayService() *PostSendArrayService {
-	return &PostSendArrayService{c: c}
+func (c *Client) NewSendArrayService() *SendArrayService {
+	return &SendArrayService{c: c}
 }
-func (c *Client) NewStatusService() *GetStatusService {
-	return &GetStatusService{c: c}
+func (c *Client) NewStatusService() *StatusService {
+	return &StatusService{c: c}
 }
-func (c *Client) NewStatusByLocalIDService() *GetStatusByLocalIDService {
-	return &GetStatusByLocalIDService{c: c}
+func (c *Client) NewStatusByLocalIDService() *StatusByLocalIDService {
+	return &StatusByLocalIDService{c: c}
 }
-func (c *Client) NewSelectService() *GetSelectService {
-	return &GetSelectService{c: c}
+func (c *Client) NewSelectService() *SelectService {
+	return &SelectService{c: c}
 }
 func (c *Client) NewSelectOutboxService() *SelectOutboxService {
 	return &SelectOutboxService{c: c}
@@ -179,23 +179,23 @@ func (c *Client) NewSelectOutboxService() *SelectOutboxService {
 func (c *Client) NewLatestOutBoxService() *LatestOutBoxService {
 	return &LatestOutBoxService{c: c}
 }
-func (c *Client) NewGetCountOutboxService() *GetCountOutboxService {
-	return &GetCountOutboxService{c: c}
+func (c *Client) NewCountOutboxService() *CountOutboxService {
+	return &CountOutboxService{c: c}
 }
-func (c *Client) NewGetCancelService() *GetCancelService {
-	return &GetCancelService{c: c}
+func (c *Client) NewCancelService() *CancelService {
+	return &CancelService{c: c}
 }
-func (c *Client) NewGetReceiveService() *GetReceiveService {
-	return &GetReceiveService{c: c}
+func (c *Client) NewReceiveService() *ReceiveService {
+	return &ReceiveService{c: c}
 }
-func (c *Client) NewGetCountInboxService() *GetCountInboxService {
-	return &GetCountInboxService{c: c}
+func (c *Client) NewCountInboxService() *CountInboxService {
+	return &CountInboxService{c: c}
 }
-func (c *Client) NewGetInfoService() *GetInfoService {
-	return &GetInfoService{c: c}
+func (c *Client) NewInfoService() *InfoService {
+	return &InfoService{c: c}
 }
-func (c *Client) NewGetLookupService() *GetLookupService {
-	return &GetLookupService{c: c}
+func (c *Client) NewLookupService() *LookupService {
+	return &LookupService{c: c}
 }
 
 type (

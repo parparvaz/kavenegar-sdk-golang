@@ -126,29 +126,29 @@ type LatestOutBox struct {
 	} `json:"entries"`
 }
 
-type GetCountOutboxService struct {
+type CountOutboxService struct {
 	c         *Client
 	startDate int64
 	endDate   *int64
 	status    *string
 }
 
-func (s *GetCountOutboxService) StartDate(startDate int64) *GetCountOutboxService {
+func (s *CountOutboxService) StartDate(startDate int64) *CountOutboxService {
 	s.startDate = startDate
 	return s
 }
 
-func (s *GetCountOutboxService) EndDate(endDate int64) *GetCountOutboxService {
+func (s *CountOutboxService) EndDate(endDate int64) *CountOutboxService {
 	s.endDate = &endDate
 	return s
 }
 
-func (s *GetCountOutboxService) Status(status string) *GetCountOutboxService {
+func (s *CountOutboxService) Status(status string) *CountOutboxService {
 	s.status = &status
 	return s
 }
 
-func (s *GetCountOutboxService) Do(ctx context.Context, opts ...RequestOption) (res *CountOutbox, err error) {
+func (s *CountOutboxService) Do(ctx context.Context, opts ...RequestOption) (res *CountOutbox, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/countoutbox.json",

@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-type GetCountInboxService struct {
+type CountInboxService struct {
 	c          *Client
 	startDate  int64
 	lineNumber *string
@@ -13,27 +13,27 @@ type GetCountInboxService struct {
 	endDate    *int64
 }
 
-func (s *GetCountInboxService) StartDate(startDate int64) *GetCountInboxService {
+func (s *CountInboxService) StartDate(startDate int64) *CountInboxService {
 	s.startDate = startDate
 	return s
 }
 
-func (s *GetCountInboxService) EndDate(endDate int64) *GetCountInboxService {
+func (s *CountInboxService) EndDate(endDate int64) *CountInboxService {
 	s.endDate = &endDate
 	return s
 }
 
-func (s *GetCountInboxService) LineNumber(lineNumber string) *GetCountInboxService {
+func (s *CountInboxService) LineNumber(lineNumber string) *CountInboxService {
 	s.lineNumber = &lineNumber
 	return s
 }
 
-func (s *GetCountInboxService) IsRead(isRead int64) *GetCountInboxService {
+func (s *CountInboxService) IsRead(isRead int64) *CountInboxService {
 	s.isRead = &isRead
 	return s
 }
 
-func (s *GetCountInboxService) Do(ctx context.Context, opts ...RequestOption) (res *CountInbox, err error) {
+func (s *CountInboxService) Do(ctx context.Context, opts ...RequestOption) (res *CountInbox, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/countinbox.json",
@@ -73,11 +73,11 @@ type CountInbox struct {
 	} `json:"entries"`
 }
 
-type GetInfoService struct {
+type InfoService struct {
 	c *Client
 }
 
-func (s *GetInfoService) Do(ctx context.Context, opts ...RequestOption) (res *Info, err error) {
+func (s *InfoService) Do(ctx context.Context, opts ...RequestOption) (res *Info, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/info.json",

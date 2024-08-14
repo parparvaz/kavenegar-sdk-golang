@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type GetSendService struct {
+type SendService struct {
 	c        *Client
 	receptor string
 	message  string
@@ -17,42 +17,42 @@ type GetSendService struct {
 	hide     *[]byte
 }
 
-func (s *GetSendService) Receptor(receptor []string) *GetSendService {
+func (s *SendService) Receptor(receptor []string) *SendService {
 	s.receptor = strings.Join(receptor, ",")
 	return s
 }
 
-func (s *GetSendService) Message(message string) *GetSendService {
+func (s *SendService) Message(message string) *SendService {
 	s.message = message
 	return s
 }
 
-func (s *GetSendService) Sender(sender string) *GetSendService {
+func (s *SendService) Sender(sender string) *SendService {
 	s.sender = &sender
 	return s
 }
 
-func (s *GetSendService) Date(date int64) *GetSendService {
+func (s *SendService) Date(date int64) *SendService {
 	s.date = &date
 	return s
 }
 
-func (s *GetSendService) SendType(sendType string) *GetSendService {
+func (s *SendService) SendType(sendType string) *SendService {
 	s.sendType = &sendType
 	return s
 }
 
-func (s *GetSendService) LocalID(localID int64) *GetSendService {
+func (s *SendService) LocalID(localID int64) *SendService {
 	s.localID = &localID
 	return s
 }
 
-func (s *GetSendService) Hide(hide []byte) *GetSendService {
+func (s *SendService) Hide(hide []byte) *SendService {
 	s.hide = &hide
 	return s
 }
 
-func (s *GetSendService) Do(ctx context.Context, opts ...RequestOption) (res *Send, err error) {
+func (s *SendService) Do(ctx context.Context, opts ...RequestOption) (res *Send, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/send.json",
@@ -104,7 +104,7 @@ type Send struct {
 	} `json:"entries"`
 }
 
-type PostSendArrayService struct {
+type SendArrayService struct {
 	c               *Client
 	receptor        []string
 	message         []string
@@ -115,27 +115,27 @@ type PostSendArrayService struct {
 	hide            *[]byte
 }
 
-func (s *PostSendArrayService) Receptor(receptor []string) *PostSendArrayService {
+func (s *SendArrayService) Receptor(receptor []string) *SendArrayService {
 	s.receptor = receptor
 	return s
 }
 
-func (s *PostSendArrayService) Message(message []string) *PostSendArrayService {
+func (s *SendArrayService) Message(message []string) *SendArrayService {
 	s.message = message
 	return s
 }
 
-func (s *PostSendArrayService) Sender(sender []string) *PostSendArrayService {
+func (s *SendArrayService) Sender(sender []string) *SendArrayService {
 	s.sender = sender
 	return s
 }
 
-func (s *PostSendArrayService) Date(date int64) *PostSendArrayService {
+func (s *SendArrayService) Date(date int64) *SendArrayService {
 	s.date = &date
 	return s
 }
 
-func (s *PostSendArrayService) SendType(sendTypes []sendType) *PostSendArrayService {
+func (s *SendArrayService) SendType(sendTypes []sendType) *SendArrayService {
 	var st []int8
 	for _, sendType := range sendTypes {
 		st = append(st, sendType.int8())
@@ -144,17 +144,17 @@ func (s *PostSendArrayService) SendType(sendTypes []sendType) *PostSendArrayServ
 	return s
 }
 
-func (s *PostSendArrayService) LocalID(localmessageids []int64) *PostSendArrayService {
+func (s *SendArrayService) LocalID(localmessageids []int64) *SendArrayService {
 	s.localMessageIDs = &localmessageids
 	return s
 }
 
-func (s *PostSendArrayService) Hide(hide []byte) *PostSendArrayService {
+func (s *SendArrayService) Hide(hide []byte) *SendArrayService {
 	s.hide = &hide
 	return s
 }
 
-func (s *PostSendArrayService) Do(ctx context.Context, opts ...RequestOption) (res *SendArray, err error) {
+func (s *SendArrayService) Do(ctx context.Context, opts ...RequestOption) (res *SendArray, err error) {
 	r := &request{
 		method:   http.MethodPost,
 		endpoint: "/v1/%s/sms/sendarray.json",

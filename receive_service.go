@@ -5,23 +5,23 @@ import (
 	"net/http"
 )
 
-type GetReceiveService struct {
+type ReceiveService struct {
 	c          *Client
 	lineNumber string
 	isRead     int64
 }
 
-func (s *GetReceiveService) LineNumber(lineNumber string) *GetReceiveService {
+func (s *ReceiveService) LineNumber(lineNumber string) *ReceiveService {
 	s.lineNumber = lineNumber
 	return s
 }
 
-func (s *GetReceiveService) IsRead(isRead int64) *GetReceiveService {
+func (s *ReceiveService) IsRead(isRead int64) *ReceiveService {
 	s.isRead = isRead
 	return s
 }
 
-func (s *GetReceiveService) Do(ctx context.Context, opts ...RequestOption) (res *Receive, err error) {
+func (s *ReceiveService) Do(ctx context.Context, opts ...RequestOption) (res *Receive, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/receive.json",

@@ -6,17 +6,17 @@ import (
 	"strings"
 )
 
-type GetCancelService struct {
+type CancelService struct {
 	c         *Client
 	messageID string
 }
 
-func (s *GetCancelService) MessageID(messageID []string) *GetCancelService {
+func (s *CancelService) MessageID(messageID []string) *CancelService {
 	s.messageID = strings.Join(messageID, ",")
 	return s
 }
 
-func (s *GetCancelService) Do(ctx context.Context, opts ...RequestOption) (res *Cancel, err error) {
+func (s *CancelService) Do(ctx context.Context, opts ...RequestOption) (res *Cancel, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/sms/cancel.json",

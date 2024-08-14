@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-type GetLookupService struct {
+type LookupService struct {
 	c          *Client
 	receptor   string
 	token      string
@@ -15,37 +15,37 @@ type GetLookupService struct {
 	lookupType *string
 }
 
-func (s *GetLookupService) Receptor(receptor string) *GetLookupService {
+func (s *LookupService) Receptor(receptor string) *LookupService {
 	s.receptor = receptor
 	return s
 }
 
-func (s *GetLookupService) Token(token string) *GetLookupService {
+func (s *LookupService) Token(token string) *LookupService {
 	s.token = token
 	return s
 }
 
-func (s *GetLookupService) Template(template string) *GetLookupService {
+func (s *LookupService) Template(template string) *LookupService {
 	s.template = template
 	return s
 }
 
-func (s *GetLookupService) Token2(token2 string) *GetLookupService {
+func (s *LookupService) Token2(token2 string) *LookupService {
 	s.token2 = &token2
 	return s
 }
 
-func (s *GetLookupService) Token3(token3 string) *GetLookupService {
+func (s *LookupService) Token3(token3 string) *LookupService {
 	s.token3 = &token3
 	return s
 }
 
-func (s *GetLookupService) Type(lookupType string) *GetLookupService {
+func (s *LookupService) Type(lookupType string) *LookupService {
 	s.lookupType = &lookupType
 	return s
 }
 
-func (s *GetLookupService) Do(ctx context.Context, opts ...RequestOption) (res *Lookup, err error) {
+func (s *LookupService) Do(ctx context.Context, opts ...RequestOption) (res *Lookup, err error) {
 	r := &request{
 		method:   http.MethodGet,
 		endpoint: "/v1/%s/verify/lookup.json",
